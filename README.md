@@ -1,2 +1,2 @@
 # watchcloud
-*WatchCloud provides real time current weatjer forecast and interpretation*
+*WatchCloud provides real time current weather forecast and interpretation*
