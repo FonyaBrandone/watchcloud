@@ -1,0 +1,164 @@
+body {
+    overflow-x: hidden;
+    height: auto;
+    width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    font-family: 'Times New Roman', Times, serif;
+    opacity: 0.9;
+}
+
+.title-icon {
+    color: #6c64fb;
+}
+
+#watch {
+    color: #24142c;
+}
+
+#cloud {
+    color: #6c64fb;
+}
+
+.setting-btn {
+    cursor: pointer;
+    background-color: #24142c;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#lamp {
+    cursor: pointer;
+    border: 1px none;
+    border-color: white;
+}
+
+#power {
+    color: #24142c;
+}
+
+.part-1 {
+    height: auto;
+    background-color: #24142c;
+    background-image: url(../assets/images/weather-2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.part-1 p {
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    opacity: 0.9;
+    padding-top: 90px;
+}
+
+.cloud-icon {
+    font-size: 50px;
+}
+
+.city-inp {
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+    opacity: 0.95;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input:focus {
+    border: 2px #24142c;
+}
+
+input:active {
+    border: 2px #24142c;
+}
+
+.current-weather {
+    height: auto;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.city {
+    color: #24142c;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.city-icon {
+    color: #24142c;
+    font-size: 28px;
+}
+
+th {
+    color: #24142c;
+    opacity: 0.95;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+}
+
+table {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.interpretation {
+    color: #24142c;
+    opacity: 0.9;
+}
+
+.i-weather {
+    color: #24142c;
+}
+
+.b-time {
+    color: #24142c;
+    opacity: 0.9;
+}
+
+.sicon {
+    color: #6c64fb;
+}
+
+#preloader {
+    width: 100%;
+    height: 100vh;
+    background: white url(../assets/images/watchcloud.png) no-repeat center center;
+    background-size: 20%;
+    z-index: 100;
+    position: fixed;
+}
+
+footer {
+    background-color: #24142c;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    height: 63px;
+}
+
+.link {
+    opacity: 0.85;
+    color: #6c64fb;
+    text-decoration: none;
+}
+
+
+/* Adjusting current weather display on various screens */
+
+@media screen and (min-width: 1024px) {
+    .current-weather {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 612px) {
+    .current-weather {
+        width: 90%;
+    }
+}

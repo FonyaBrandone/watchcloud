@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchCloud - Weather Forecast and Interpretation</title>
+    <link rel="shortcut icon" href="assets/icon/ico.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!--Bootstrap cdn:-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <div id="preloader"></div>
+
+    <div class="header shadow-sm" style="width: 100vw;">
+        <div class="container hh py-3">
+            <div class="row">
+                <div class="col-6 flex-start justify-content-start align-items-start text-start">
+                    <span class="text-left title fs-3 mt-1">
+                        <i class="bi bi-rainbow title-icon fs-2"></i> <span id="watch">Watch</span><span id="cloud">Cloud</span>
+                    </span>
+                </div>
+                <div class="col-6 flex-end justify-content-end align-items-end text-end">
+                    <button id="lamp" onclick="lamp()" class="btn m-1 fs-4" title="Toggle Dark and Light Modes"><i class="bi bi-moon-fill fs-4" id="power"></i></button>
+                    <button id="setting" class="btn m-1 ps-2 pe-3 text-white setting-btn" title="Change Forecast Settings"><i class="bi bi-gear px-1"></i> Setting</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-lg-12 w-100 part-1 pb-5">
+        <p class="w-100 text-center px-5 text-white"><i class="bi bi-cloud cloud-icon pe-2"></i><br><b>WatchCloud </b>provides real time weather Forcasts and interpretation</p>
+        <div class="w-100 text-center align-items-center justify-content-center mb-5">
+            <input type="text" id="input" class="city-inp p-3" placeholder="Search your city" required>
+            <button id="search" class="btn mx-1 ps-2 pe-3 text-white setting-btn" name="search" data-bs-placement="bottom" data-bs-toggle="modal" data-bs-target="#login-modal"><i class="bi bi-search px-1"></i> Search</button>
+
+        </div>
+    </div>
+    <section class="down-section container-lg-12">
+
+        <div class="container-lg-12 rounded current-weather my-5 p-3 fs-3 shadow-lg" id="current-section">
+
+            <table class="mx-2 px-2 d-flex text-center align-items-center justify-content-center">
+                <h3 class="text-center city"><i class="bi bi-geo-fill city-icon pe-2"></i> <span id="this-city"></span>, <span id="code"></span></h3>
+                <hr>
+                <tr class="my-3 py-3 fs-4">
+                    <th class="me-5 pe-5">Temperature</th>
+                    <td class="ms-5 ps-5"><span id="temp"></span> &deg;C <i class="bi bi-thermometer-half i-weather ps-1"></i></td>
+                </tr>
+                <tr class="my-3 py-3 fs-4">
+                    <th class="me-5 pe-5">Humidity</th>
+                    <td class="ms-5 ps-5"><span id="hum"></span> % <i class="bi bi-droplet ps-1 i-weather"></i> </td>
+                </tr>
+                <tr class="my-3 py-3 fs-4">
+                    <th class="me-5 pe-5">Pressure</th>
+                    <td class="ms-5 ps-5"><span id="pres"></span> hPa <i class="bi bi-moisture ps-1 i-weather"></i> </td>
+                </tr>
+                <tr class="my-3 py-3 fs-4">
+                    <th class="me-5 pe-5">Wind Speed</th>
+                    <td class="ms-5 ps-5"><span id="wind"></span> m/s <i class="bi bi-wind i-weather ps-1"></i> </td>
+                </tr>
+
+                <!-- Weather Interpration -->
+                <h5 class="text-center city px-5 py-4 interpretation"> ("The current Weather over <span id="this-loc"></span> is <span id="state"></span> - <span id="desc"></span>") </h5>
+
+
+                <!--Sunrise and set times-->
+                <tr class="mb-3 py-3 fs-4 mt-5">
+                    <th class="me-5 mt-3 pe-5">Sunrise Today:</th>
+                    <td class="ms-5 ps-5"><b class="b-time"><span id="rise"></span></b></td>
+                </tr>
+                <tr class="my-3 py-3 fs-4">
+                    <th class="me-5 pe-5">Time of Sunset:</th>
+                    <td class="ms-5 ps-5"><b class="b-time"><span id="set"></span></b></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <footer class="container-lg-12 text-center">
+            <p class="py-3">Coded with <span>&#x2665</span> by <a class="link" target="_blank" href="https://github.com/FonyaBrandone">Fonya Brandone</a></p>
+        </footer>
+
+    </section>
+
+
+
+    <!-- Menu Modal:-->
+    <div class="container" id="searchModal">
+        <div id="login-modal" class="modal fade" tabindex="-1" aria-hidden="true" aria-labelledby="modal-title">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title"><i class="bi bi-search pe-2"></i><span id="search-city"></span>, <span id="country"></span></h5>
+                        <button class="btn-close" aria-label="modal-title" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <table class="mx-2 px-2 d-flex text-center align-items-center justify-content-center">
+
+                            <tr class="my-3 py-3 fs-4">
+                                <th class="me-5 pe-5">Temperature</th>
+                                <td class="ms-5 ps-5"><span id="search-temp"></span> &deg;C <i class="bi bi-thermometer-half i-weather ps-1"></i></td>
+                            </tr>
+                            <tr class="my-3 py-3 fs-4">
+                                <th class="me-5 pe-5">Humidity</th>
+                                <td class="ms-5 ps-5"><span id="search-hum"></span> % <i class="bi bi-droplet ps-1 i-weather"></i> </td>
+                            </tr>
+                            <tr class="my-3 py-3 fs-4">
+                                <th class="me-5 pe-5">Pressure</th>
+                                <td class="ms-5 ps-5"><span id="search-pres"></span> hPa <i class="bi bi-moisture ps-1 i-weather"></i> </td>
+                            </tr>
+                            <tr class="my-3 py-3 fs-4">
+                                <th class="me-5 pe-5">Wind Speed</th>
+                                <td class="ms-5 ps-5"><span id="search-wind"></span> m/s <i class="bi bi-wind i-weather ps-1"></i> </td>
+                            </tr>
+
+                            <!-- Weather Interpration -->
+                            <h5 class="text-center city px-5 py-4 interpretation"><i class="bi bi-rainbow sicon pe-1"></i> The Weather now in <span id="search-loc"></span> is <span id="search-state"></span> - <span id="search-desc"></span> </h5>
+
+
+                            <!--Sunrise and set times-->
+                            <tr class="mb-3 py-3 fs-4 mt-5">
+                                <th class="me-5 mt-3 pe-5">Sunrise:</th>
+                                <td class="ms-5 ps-5"><b class="b-time"><span id="search-rise"></span></b></td>
+                            </tr>
+                            <tr class="my-3 py-3 fs-4">
+                                <th class="me-5 pe-5">Sunset:</th>
+                                <td class="ms-5 ps-5"><b class="b-time"><span id="search-set"></span></b></td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/searchCity.js"></script>
+    <script src="assets/js/connection.js"></script>
+    <script src="assets/js/preloader.js"></script>
+
+    <!--Bootstrap and Jquery Scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</body>
+
+</html>
